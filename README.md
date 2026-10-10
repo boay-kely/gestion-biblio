@@ -42,12 +42,18 @@ python manage.py runserver
 
 ## Déploiement Render (`gestion-biblio`)
 
-1. Créer un service Web nommé **`gestion-biblio`** (URL : `https://gestion-biblio.onrender.com`).
-2. Build : `./build.sh` — Start : `gunicorn --chdir backend core.wsgi:application`
-3. Ajouter une base **PostgreSQL** et lier `DATABASE_URL`.
-4. Variables : `SECRET_KEY`, `DEBUG=False`, `ALLOWED_HOSTS=gestion-biblio.onrender.com,gestion-biblio`
+Repo GitHub : https://github.com/boay-kely/gestion-biblio
 
-Ou utiliser le blueprint `render.yaml`.
+**Blueprint (recommandé)** : https://dashboard.render.com/select-repo?type=blueprint  
+→ connectez le dépôt `boay-kely/gestion-biblio` → appliquer `render.yaml`.
+
+1. Service Web nommé **`gestion-biblio`** → URL : `https://gestion-biblio.onrender.com`
+2. Build : `chmod +x build.sh && ./build.sh` — Start : `gunicorn --chdir backend core.wsgi:application`
+3. Base **PostgreSQL** liée via `DATABASE_URL`
+4. Variables : `SECRET_KEY`, `DEBUG=False`, `ALLOWED_HOSTS=gestion-biblio.onrender.com,gestion-biblio,.onrender.com`
+5. Optionnel : `ADMIN_PASSWORD` (crée automatiquement le compte `admin` au build via `ensure_admin`)
+
+Après le 1er déploiement, récupérez `ADMIN_PASSWORD` dans le dashboard Render (Environment) pour vous connecter.
 
 ### DNS (domaine personnalisé)
 
