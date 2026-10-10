@@ -22,6 +22,12 @@ services:
         value: gestion-biblio.onrender.com,gestion-biblio,.onrender.com
       - key: CSRF_TRUSTED_ORIGINS
         value: https://gestion-biblio.onrender.com
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD
+        generateValue: true
+      - key: ADMIN_EMAIL
+        value: admin@gestion-biblio.local
 
 databases:
   - name: gestion-biblio-db
