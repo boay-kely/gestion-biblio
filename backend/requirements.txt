@@ -1,0 +1,7 @@
+Django>=6.0,<7
+djangorestframework>=3.15
+djangorestframework-simplejwt>=5.3
+gunicorn>=23.0
+whitenoise>=6.7
+dj-database-url>=2.2
+psycopg2-binary>=2.9

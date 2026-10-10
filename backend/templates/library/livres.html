@@ -1,0 +1,45 @@
+{% extends "library/base.html" %}
+{% load static %}
+
+{% block title %}Livres — Gestion Biblio{% endblock %}
+
+{% block content %}
+<section class="page-head">
+  <div>
+    <h1>Livres</h1>
+    <p>Catalogue et stock disponibles.</p>
+  </div>
+  <button type="button" class="btn btn-primary staff-only" id="btn-add-livre">+ Ajouter un livre</button>
+</section>
+
+<div class="toolbar">
+  <input type="search" id="search-livres" placeholder="Rechercher titre, auteur, ISBN…" class="input">
+  <label class="check-inline">
+    <input type="checkbox" id="filter-dispo"> Disponibles uniquement
+  </label>
+</div>
+
+<div class="table-wrap panel">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Titre</th>
+        <th>Auteur</th>
+        <th>ISBN</th>
+        <th>Catégorie</th>
+        <th>Stock</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="livres-tbody">
+      <tr><td colspan="6" class="empty">Chargement…</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="pagination" id="livres-pagination"></div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/livres.js' %}"></script>
+{% endblock %}

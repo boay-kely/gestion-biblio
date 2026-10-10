@@ -1,0 +1,48 @@
+{% extends "library/base.html" %}
+{% load static %}
+
+{% block title %}Emprunts — Gestion Biblio{% endblock %}
+
+{% block content %}
+<section class="page-head">
+  <div>
+    <h1>Emprunts</h1>
+    <p>Suivi des prêts et retours.</p>
+  </div>
+  <button type="button" class="btn btn-primary" id="btn-add-emprunt">+ Nouvel emprunt</button>
+</section>
+
+<div class="toolbar">
+  <select id="filter-statut" class="input">
+    <option value="">Tous les statuts</option>
+    <option value="en_cours">En cours</option>
+    <option value="retour_en_attente">Validation en attente</option>
+    <option value="valide">Retour validé</option>
+  </select>
+</div>
+
+<div class="table-wrap panel">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Livre</th>
+        <th>Membre</th>
+        <th>Emprunt</th>
+        <th>Retour prévu</th>
+        <th>Statut</th>
+        <th>Pénalité</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="emprunts-tbody">
+      <tr><td colspan="7" class="empty">Chargement…</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="pagination" id="emprunts-pagination"></div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/emprunts.js' %}"></script>
+{% endblock %}

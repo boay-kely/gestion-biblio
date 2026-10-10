@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription — Gestion Biblio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+<body class="auth-body">
+  <div class="auth-layout">
+    <section class="auth-panel">
+      <p class="auth-brand">Gestion Biblio</p>
+      <h1>Créer un compte</h1>
+      <p class="auth-lead">Inscription client — accès catalogue et emprunts.</p>
+      <form id="register-form" class="auth-form">
+        <div class="form-row">
+          <label>Prénom <input type="text" name="first_name" id="first_name" required></label>
+          <label>Nom <input type="text" name="last_name" id="last_name" required></label>
+        </div>
+        <label>Nom d'utilisateur <input type="text" name="username" id="username" required></label>
+        <label>Email <input type="email" name="email" id="email"></label>
+        <label>Mot de passe <input type="password" name="password" id="password" minlength="6" required></label>
+        <div class="form-row">
+          <label>Date de naissance <input type="date" name="date_naissance" id="date_naissance"></label>
+          <label>Lieu de naissance <input type="text" name="lieu_naissance" id="lieu_naissance"></label>
+        </div>
+        <p id="register-error" class="form-error hidden"></p>
+        <button type="submit" class="btn btn-primary btn-block">S'inscrire</button>
+      </form>
+      <p class="auth-alt">Déjà inscrit ? <a href="{% url 'login' %}">Se connecter</a></p>
+    </section>
+    <aside class="auth-visual" aria-hidden="true">
+      <div class="auth-visual-inner">
+        <h2>Rejoignez<br>la bibliothèque.</h2>
+        <p>Empruntez, suivez vos retours et restez informé des retards.</p>
+      </div>
+    </aside>
+  </div>
+  <div id="toast" class="toast hidden" role="status"></div>
+  <script src="{% static 'js/api.js' %}"></script>
+  <script src="{% static 'js/auth.js' %}"></script>
+</body>
+</html>

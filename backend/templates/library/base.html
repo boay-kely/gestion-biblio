@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Gestion Biblio{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body data-page="{{ page|default:'' }}">
+  <div class="app-shell" id="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <span class="brand-mark">GB</span>
+        <div>
+          <strong>Gestion Biblio</strong>
+          <small>Bibliothèque</small>
+        </div>
+      </div>
+      <nav class="nav" id="main-nav">
+        <a href="{% url 'home' %}" class="nav-link {% if page == 'dashboard' %}active{% endif %}" data-nav="dashboard">Tableau de bord</a>
+        <a href="{% url 'livres' %}" class="nav-link {% if page == 'livres' %}active{% endif %}" data-nav="livres">Livres</a>
+        <a href="{% url 'categories' %}" class="nav-link {% if page == 'categories' %}active{% endif %} staff-only" data-nav="categories">Catégories</a>
+        <a href="{% url 'membres' %}" class="nav-link {% if page == 'membres' %}active{% endif %} staff-only" data-nav="membres">Membres</a>
+        <a href="{% url 'emprunts' %}" class="nav-link {% if page == 'emprunts' %}active{% endif %}" data-nav="emprunts">Emprunts</a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-chip" id="user-chip">
+          <span id="user-name">—</span>
+          <small id="user-role">—</small>
+        </div>
+        <button type="button" class="btn btn-ghost" id="btn-logout">Déconnexion</button>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <button type="button" class="btn btn-ghost menu-toggle" id="menu-toggle" aria-label="Menu">☰</button>
+        <div id="alertes-banner" class="alertes-banner hidden"></div>
+        <div class="topbar-spacer"></div>
+      </header>
+      <main class="content">
+        {% block content %}{% endblock %}
+      </main>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden" role="status"></div>
+  <div id="modal-root"></div>
+
+  <script src="{% static 'js/api.js' %}"></script>
+  <script src="{% static 'js/app.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

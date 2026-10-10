@@ -1,0 +1,62 @@
+-- 1. Table Utilisateur (hérite de AbstractUser)
+CREATE TABLE library_user (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    password VARCHAR(128) NOT NULL,
+    last_login DATETIME(6) NULL,
+    is_superuser TINYINT(1) NOT NULL,
+    username VARCHAR(150) NOT NULL UNIQUE,
+    first_name VARCHAR(150) NOT NULL,
+    last_name VARCHAR(150) NOT NULL,
+    email VARCHAR(254) NOT NULL,
+    is_staff TINYINT(1) NOT NULL,
+    is_active TINYINT(1) NOT NULL,
+    date_joined DATETIME(6) NOT NULL,
+    role VARCHAR(20) NOT NULL DEFAULT 'lecteur'
+);
+
+-- 2. Table Categorie
+CREATE TABLE library_categorie (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL
+);
+
+-- 3. Table Livre
+CREATE TABLE library_livre (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titre VARCHAR(200) NOT NULL,
+    auteur VARCHAR(150) NOT NULL,
+    isbn VARCHAR(13) NOT NULL UNIQUE,
+    quantite_disponible INT NOT NULL DEFAULT 1,
+    categorie_id INT NOT NULL,
+    CONSTRAINT fk_livre_categorie 
+        FOREIGN KEY (categorie_id) REFERENCES library_categorie(id) 
+        ON DELETE CASCADE
+);
+
+-- 4. Table Emprunt
+CREATE TABLE library_emprunt (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    livre_id INT NOT NULL,
+    date_emprunt DATETIME(6) NOT NULL,
+    date_retour_prevue DATE NOT NULL,
+    date_retour_effective DATETIME(6) NULL,
+    est_rendu TINYINT(1) NOT NULL DEFAULT 0,
+    CONSTRAINT fk_emprunt_user 
+        FOREIGN KEY (user_id) REFERENCES library_user(id) 
+        ON DELETE CASCADE,
+    CONSTRAINT fk_emprunt_livre 
+        FOREIGN KEY (livre_id) REFERENCES library_livre(id) 
+        ON DELETE CASCADE
+);
+
+-- 5. Table Membre
+CREATE TABLE library_membre (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,
+    prenom VARCHAR(100) NOT NULL,
+    date_naissance DATE NOT NULL,
+    lieu_naissance VARCHAR(150) NOT NULL,
+    a_propos TEXT NULL,
+    date_inscription DATETIME(6) NOT NULL
+);

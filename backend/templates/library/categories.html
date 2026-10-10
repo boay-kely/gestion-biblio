@@ -1,0 +1,33 @@
+{% extends "library/base.html" %}
+{% load static %}
+
+{% block title %}Catégories — Gestion Biblio{% endblock %}
+
+{% block content %}
+<section class="page-head">
+  <div>
+    <h1>Catégories</h1>
+    <p>Organisation du catalogue.</p>
+  </div>
+  <button type="button" class="btn btn-primary staff-only" id="btn-add-categorie">+ Ajouter</button>
+</section>
+
+<div class="table-wrap panel">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="categories-tbody">
+      <tr><td colspan="3" class="empty">Chargement…</td></tr>
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/categories.js' %}"></script>
+{% endblock %}

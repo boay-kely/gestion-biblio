@@ -1,0 +1,38 @@
+{% extends "library/base.html" %}
+{% load static %}
+
+{% block title %}Membres — Gestion Biblio{% endblock %}
+
+{% block content %}
+<section class="page-head">
+  <div>
+    <h1>Membres</h1>
+    <p>Adhérents de la bibliothèque.</p>
+  </div>
+  <button type="button" class="btn btn-primary staff-only" id="btn-add-membre">+ Ajouter un membre</button>
+</section>
+
+<div class="table-wrap panel">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Compte</th>
+        <th>Naissance</th>
+        <th>Inscription</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="membres-tbody">
+      <tr><td colspan="6" class="empty">Chargement…</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="pagination" id="membres-pagination"></div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/membres.js' %}"></script>
+{% endblock %}

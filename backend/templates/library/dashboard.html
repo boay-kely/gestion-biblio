@@ -1,0 +1,56 @@
+{% extends "library/base.html" %}
+{% load static %}
+
+{% block title %}Tableau de bord — Gestion Biblio{% endblock %}
+
+{% block content %}
+<section class="page-head">
+  <h1>Tableau de bord</h1>
+  <p>Vue d'ensemble de la bibliothèque.</p>
+</section>
+
+<div class="stats-grid" id="stats-grid">
+  <article class="stat-card">
+    <span class="stat-label">Livres</span>
+    <strong class="stat-value" id="stat-livres">—</strong>
+  </article>
+  <article class="stat-card staff-only">
+    <span class="stat-label">Membres</span>
+    <strong class="stat-value" id="stat-membres">—</strong>
+  </article>
+  <article class="stat-card">
+    <span class="stat-label">Emprunts actifs</span>
+    <strong class="stat-value" id="stat-emprunts">—</strong>
+  </article>
+  <article class="stat-card">
+    <span class="stat-label">Retards</span>
+    <strong class="stat-value" id="stat-retards">—</strong>
+  </article>
+</div>
+
+<section class="panel">
+  <div class="panel-head">
+    <h2>Emprunts récents</h2>
+    <a href="{% url 'emprunts' %}" class="btn btn-ghost">Voir tout</a>
+  </div>
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Livre</th>
+          <th>Membre</th>
+          <th>Retour prévu</th>
+          <th>Statut</th>
+        </tr>
+      </thead>
+      <tbody id="recent-emprunts">
+        <tr><td colspan="4" class="empty">Chargement…</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/dashboard.js' %}"></script>
+{% endblock %}
