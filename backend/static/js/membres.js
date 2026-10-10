@@ -23,12 +23,12 @@
         .map((m) => {
           const date = m.date_inscription ? String(m.date_inscription).slice(0, 10) : '—';
           return `<tr>
-            <td>${escapeHtml(m.nom)}</td>
-            <td>${escapeHtml(m.prenom)}</td>
-            <td>${escapeHtml(m.username || '—')}</td>
-            <td>${escapeHtml(m.date_naissance || '—')}</td>
-            <td>${escapeHtml(date)}</td>
-            <td><div class="row-actions">
+            <td data-label="Nom">${escapeHtml(m.nom)}</td>
+            <td data-label="Prénom">${escapeHtml(m.prenom)}</td>
+            <td data-label="Compte">${escapeHtml(m.username || '—')}</td>
+            <td data-label="Naissance">${escapeHtml(m.date_naissance || '—')}</td>
+            <td data-label="Inscription">${escapeHtml(date)}</td>
+            <td data-label="Actions"><div class="row-actions">
               <button type="button" class="btn btn-ghost btn-sm" data-edit="${m.id}">Modifier</button>
               <button type="button" class="btn btn-danger btn-sm" data-del="${m.id}">Supprimer</button>
             </div></td>

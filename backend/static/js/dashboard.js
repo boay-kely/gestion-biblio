@@ -32,10 +32,10 @@
           ? `${e.membre_detail.prenom} ${e.membre_detail.nom}`
           : `#${e.membre}`;
         return `<tr>
-          <td>${escapeHtml(livre)}</td>
-          <td>${escapeHtml(membre)}</td>
-          <td>${escapeHtml(e.date_retour_prevue || '—')}</td>
-          <td>${statusBadge(e.statut, e.est_en_retard)}</td>
+          <td data-label="Livre">${escapeHtml(livre)}</td>
+          <td data-label="Membre">${escapeHtml(membre)}</td>
+          <td data-label="Retour prévu">${escapeHtml(e.date_retour_prevue || '—')}</td>
+          <td data-label="Statut">${statusBadge(e.statut, e.est_en_retard)}</td>
         </tr>`;
       })
       .join('');

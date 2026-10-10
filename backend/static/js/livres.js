@@ -43,12 +43,12 @@
             ? `<a class="btn btn-ghost btn-sm" href="${escapeHtml(l.fichier_pdf)}" target="_blank" rel="noopener">PDF</a>`
             : '';
           return `<tr>
-            <td><strong>${escapeHtml(l.titre)}</strong></td>
-            <td>${escapeHtml(l.auteur)}</td>
-            <td>${escapeHtml(l.isbn)}</td>
-            <td>${escapeHtml(l.categorie_nom || l.categorie)}</td>
-            <td>${l.quantite_disponible}</td>
-            <td><div class="row-actions">${pdf}${staffBtns}</div></td>
+            <td data-label="Titre"><strong>${escapeHtml(l.titre)}</strong></td>
+            <td data-label="Auteur">${escapeHtml(l.auteur)}</td>
+            <td data-label="ISBN">${escapeHtml(l.isbn)}</td>
+            <td data-label="Catégorie">${escapeHtml(l.categorie_nom || l.categorie)}</td>
+            <td data-label="Stock">${l.quantite_disponible}</td>
+            <td data-label="Actions"><div class="row-actions">${pdf}${staffBtns}</div></td>
           </tr>`;
         })
         .join('');

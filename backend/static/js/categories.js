@@ -18,9 +18,9 @@
       tbody.innerHTML = rows
         .map(
           (c) => `<tr>
-            <td><strong>${escapeHtml(c.nom)}</strong></td>
-            <td>${escapeHtml(c.description || '—')}</td>
-            <td><div class="row-actions">
+            <td data-label="Nom"><strong>${escapeHtml(c.nom)}</strong></td>
+            <td data-label="Description">${escapeHtml(c.description || '—')}</td>
+            <td data-label="Actions"><div class="row-actions">
               <button type="button" class="btn btn-ghost btn-sm" data-edit="${c.id}">Modifier</button>
               <button type="button" class="btn btn-danger btn-sm" data-del="${c.id}">Supprimer</button>
             </div></td>
